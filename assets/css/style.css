@@ -285,6 +285,10 @@ ul li label:hover {
 @media screen and(max-width: 420px) {
 
     button{
-        padding-bottom: 15rem;
+        bottom: 10rem;
+    }
+
+    .answer{
+        padding: 10px;
     }
 }
