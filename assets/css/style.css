@@ -281,3 +281,10 @@ ul li label:hover {
     cursor: pointer;
     border: none;
 }
+
+@media screen and(max-width: 420px) {
+
+    button{
+        padding-bottom: 15rem;
+    }
+}
