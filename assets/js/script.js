@@ -98,6 +98,8 @@ submitBtn.addEventListener('click', () =>{
         if(currentQuiz < quizData.length) {
             loadQuiz()
         } else {
+            const restartbutton = document.getElementById('restart')
+            restartbutton.style.visibility = 'visible'
             quiz.innerHTML = `
             <h2>You answered ${score}/${quizData.length} questions correctly</h2>
 
