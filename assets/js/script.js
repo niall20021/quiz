@@ -63,5 +63,41 @@ getNewQuestion = () => {
     }
 
     questionCounter++
-    progressText.innerText = `Question %{}
+    progressText.innerText = `Question %{questionCounter} of ${MAX_QUESTIONS}`
+/*Keeps Track of which question the user is on*/
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+    currentQuestion = availableQuestions[questionsIndex]
+    question.innerText = currentQuestion.question
+
+    choices.forEach(choice => {
+        const number = choice.dataset['number']
+        choice.innerText = currentQuestion['choice' + number]
+    })
+
+    availableQuestions.splice(questionsIndex, 1)
+
+    acceptingAnswer = true
 }
+
+choices.forEach(choice =>{
+    choice.addEventListener('click', e => {
+        if(!acceptingAnswer) return
+
+        acceptingAnswer = false
+        const selectedChoice = e.target
+        const selectedAnswer = selectedChoice.dataset('number')
+/* Toggling either or green or red if question is incorrect or correct*/
+        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
+/*Increasing score if answer is correct */
+        if(classToApply === 'correct') {
+            incrementScore(SCORE_POINTS)
+        }
+
+        selectedChoice.parentElement.classList.add(classToApply)
+        
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply)
+            getNewQuestion()
+        }, 1000)
+    }) 
+})
