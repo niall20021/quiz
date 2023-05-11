@@ -46,7 +46,7 @@ let questions = [
 
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 4
-
+/*Making sure the game starts at beginning with no score and starts the questions counter at 0*/
 startGame = () => {
     questionCounter = 0
     score = 0
@@ -78,7 +78,7 @@ getNewQuestion = () => {
 
     acceptingAnswer = true
 }
-
+/* */
 choices.forEach(choice =>{
     choice.addEventListener('click', e => {
         if(!acceptingAnswer) return
