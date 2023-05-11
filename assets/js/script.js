@@ -78,7 +78,7 @@ getNewQuestion = () => {
 
     acceptingAnswer = true
 }
-/*Increasing score if answer is correct and Toggling either or green or red if question is incorrect or correct*/
+/*Toggling either or green or red if question is incorrect or correct*/
 choices.forEach(choice =>{
     choice.addEventListener('click', e => {
         if(!acceptingAnswer) return
@@ -88,7 +88,7 @@ choices.forEach(choice =>{
         const selectedAnswer = selectedChoice.dataset['number']
 
         let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
-
+/*Increasing score if answer is correct*/
         if(classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
         }
