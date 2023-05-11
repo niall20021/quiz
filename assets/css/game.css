@@ -28,7 +28,7 @@ body {
     padding: 2rem;
     width: 100%;
 }
-
+/*Adding color based on correct/incorrect answer */
 .correct {
     background:rgba(35,255,87,1);
 }
@@ -57,7 +57,7 @@ body {
     font-size: 5rem;
 }
 
-
+/*Viewport*/
 @media screen and (maxwidth: 765px)  {
     .choice-container {
         min-width: 40px;

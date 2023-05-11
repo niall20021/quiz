@@ -8,7 +8,7 @@ let acceptingAnswer = true
 let score = 0
 let questionCounter = 0
 let availableQuestions = []
-
+/* All questions in the order they will be asked and the correct answer for each*/
 let questions = [
     {
         question:'Where would you be if you were standing on the Spanish Steps?',
@@ -43,7 +43,7 @@ let questions = [
         answer: 3,
     },
 ]
-
+/* Points system for each question and the number of questions asked*/
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 4
 /*Making sure the game starts at beginning with no score and starts the questions counter at 0*/
@@ -54,7 +54,7 @@ startGame = () => {
     getNewQuestion()
 
 }
-
+/* Loading a new question*/
 getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score)
@@ -78,7 +78,7 @@ getNewQuestion = () => {
 
     acceptingAnswer = true
 }
-/* */
+/*Increasing score if answer is correct and Toggling either or green or red if question is incorrect or correct*/
 choices.forEach(choice =>{
     choice.addEventListener('click', e => {
         if(!acceptingAnswer) return
@@ -86,9 +86,9 @@ choices.forEach(choice =>{
         acceptingAnswer = false
         const selectedChoice = e.target
         const selectedAnswer = selectedChoice.dataset['number']
-/* Toggling either or green or red if question is incorrect or correct*/
+
         let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
-/*Increasing score if answer is correct */
+
         if(classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
         }
@@ -101,9 +101,9 @@ choices.forEach(choice =>{
         }, 1000)
     }) 
 })
-
+/*calculating users score */
 incrementScore = num => {
-    score =+ num
+    score +=num
     scoreText.innerText = score
 }
 
