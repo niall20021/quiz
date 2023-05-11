@@ -1,110 +1,50 @@
-const quizData = [
-    {
-        question: "Where would you be if you were standing on the Spanish Steps?",
-        a:"Rome",
-        b:"Shanghai",
-        c:"Napoli",
-        d:"Madrid",
-        correct:"a",
-    },
-    {
-        question: "How many countries are member states of the United Nations?",
-        a:"193",
-        b:"194",
-        c:"182",
-        d:"113",
-        correct:"a",
-    },
-    {
-        question: "What is the flattest state in the U.S.?",
-        a:"Georgia",
-        b:"Florida",
-        c:"New York",
-        d:"Alabama",
-        correct:"b",
-    },
-    {
-        question: "What country has the highest life expectancy?",
-        a:"Australia",
-        b:"Hong Kong",
-        c:"Japan",
-        d:"Monaco",
-        correct:"d",
-    },
-];
+const question = document.querySelector('#question');
+const choices = Array.from(document.querySelectorAll('.choice-text'));
+const progressText = document.querySelector('#progressText');
+const scoreText = document.querySelector('#score');
 
-const quiz = document.getElementById('quiz')
-const answerEls = document.querySelectorAll('.answer')
-const questionEl = document.getElementById('question')
-const a_text = document.getElementById('a_text')
-const b_text = document.getElementById('b_text')
-const c_text = document.getElementById('c_text')
-const d_text = document.getElementById('d_text')
-const submitBtn = document.getElementById('submit')
-
-let currentQuiz = 0
+let currentQuestion = {}
+let acceptingAnswer = true
 let score = 0
+let questionCounter = 0
+let availableQuestions = []
 
-loadQuiz()
+let questions = [
+    {
+        question:'Where would you be if you were standing on the Spanish Steps?',
+        choice1:'Madrid',
+        choice2:'Rome',
+        choice3:'Barcelona',
+        choice4:'Napoli',
+        answer: 2,
+    },
+    {
+        question:'Excluding english what is the most spoken language in the world?',
+        choice1:'Spanish',
+        choice2:'French',
+        choice3:'Hindi',
+        choice4:'Mandarin',
+        answer: 4,
+    },
+    {
+        question:'In which Continent is the is the largest dessert in the world located?',
+        choice1:'Europe',
+        choice2:'Asia',
+        choice3:'South America',
+        choice4:'Africa',
+        answer: 4,
+    },
+    {
+        question:'What country has the highest life expectancy in the world?',
+        choice1:'Japan',
+        choice2:'Macao',
+        choice3:'Hong Kong',
+        choice4:'Singapore',
+        answer: 3,
+    },
+]
 
-/**
- * Linking each question created in Javascript to its equal counterpart
- * in the game.html section,
- */
-function loadQuiz() {
+const SCORE_POINTS = 100
+const MAX_QUESTIONS = 4
 
-    deselectAnswers()
-
-    const currentQuizData = quizData[currentQuiz]
-
-    questionEl.innerText = currentQuizData.question
-    a_text.innerText = currentQuizData.a
-    b_text.innerText = currentQuizData.b
-    c_text.innerText = currentQuizData.c
-    d_text.innerText = currentQuizData.d
-}
-
-/**
- * Keeping Tally of the score the users incorrect and correct answer
- * 
- */
-function deselectAnswers() {
-    answerEls.forEach(answerEl => answerEl.checked = false)
-}
-
-function getSelected() {
-    let answer
-    answerEls.forEach(answerEl => {
-        if(answerEl.checked) {
-            answer = answerEl.id
-        }
-    })
-    return answer
-}
-
-/**
- * Logs the Users answer of each question to calculate the answer
- * and tell them their result at the end of the quiz.
- */
-submitBtn.addEventListener('click', () =>{
-    const answer = getSelected()
-    if(answer) {
-        if(answer === quizData[currentQuiz].correct) {
-            score++
-        }
-
-        currentQuiz++
-
-        if(currentQuiz < quizData.length) {
-            loadQuiz()
-        } else {
-            const restartbutton = document.getElementById('restart')
-            restartbutton.style.visibility = 'visible'
-            quiz.innerHTML = `
-            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-
-            <button onclick ='location.reload()'>Reload</button>
-            `
-        }
-    }
-})
+startGame
