@@ -63,7 +63,7 @@ getNewQuestion = () => {
     }
 
     questionCounter++
-    progressText.innerText = `Question %{questionCounter} of ${MAX_QUESTIONS}`
+    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
 /*Keeps Track of which question the user is on*/
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
@@ -85,7 +85,7 @@ choices.forEach(choice =>{
 
         acceptingAnswer = false
         const selectedChoice = e.target
-        const selectedAnswer = selectedChoice.dataset('number')
+        const selectedAnswer = selectedChoice.dataset['number']
 /* Toggling either or green or red if question is incorrect or correct*/
         let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
 /*Increasing score if answer is correct */

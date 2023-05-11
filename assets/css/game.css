@@ -53,6 +53,9 @@ body {
     text-align: center;
 }
 
+#progressText {
+    font-size: 5rem;
+}
 
 
 @media screen and (maxwidth: 765px)  {
