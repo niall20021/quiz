@@ -63,7 +63,9 @@ website making it easy to navigate and scoring system makes the game fun.
 # Credits 
 
 ## Code
-- I used [Google](https://www.google.com/) to find the questions and answers to the quiz
-- I also used [YouTube]
+- I used [Google](https://www.google.com/) to find the questions and answers to the quiz.
+- I also used [YouTube](https://www.youtube.com/) to find examples of quiz's.
+
+# Acknowledge
   
 
