@@ -43,5 +43,18 @@ website making it easy to navigate and scoring system makes the game fun.
 - The HTML, CSS and Javascript code was all ran through mulitple validators and passed without errors.
 
 - HTML
+  ![Image Link](https://github.com/niall20021/quiz/blob/main/assets/images/HTMLCHECK.PNG)
+- CSS
+  ![Image Link](https://github.com/niall20021/quiz/blob/main/assets/images/CSSCHECK.png.jpg)
+
+# Further Testing
+  - Browsers
+    - Chrome: Performs and displays correctly.
+    - Safari: Performs and displays correctly.
+    - Mozilla: Performs and displays correctly.
+  - Devices
+    - iPhone 11 Pro: Performs and displayes correctly
+    - 
+    - 
   
 
