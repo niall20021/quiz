@@ -38,5 +38,10 @@ website making it easy to navigate and scoring system makes the game fun.
   - The fonts 'Montserrat' was sourced from Google Fonts.
 - Git
   - Git was utilised for version control through ‘commit’ and ‘push’ commands through the terminal.
-- 
+
+# Testing
+- The HTML, CSS and Javascript code was all ran through mulitple validators and passed without errors.
+
+- HTML
+  
 
