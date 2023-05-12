@@ -20,4 +20,23 @@ website making it easy to navigate and scoring system makes the game fun.
    - The colors mainly used are different hues of red and blue these colors complimented eachother well and made the design turn out clean and sleek.
 
 - Color Scheme
-  - As previously acknowledge
+  - As previously acknowledge the websites main colors are red and blue with a gray and black background the color scheme stays consistent throughout the project making the mulitple pages interlink well and compliment eachother
+
+- Fonts
+  - The chosen font for Geo Quiz was 'Montserrat' this font was used with a font-weight of 300 and the website used to find the font was [GoogleFonts](https://fonts.google.com/).
+
+  # Features 
+  - Fully Responsive on all devices.
+
+  # Tehchnologies Used
+  ## Languages used
+  - HTML
+  - CSS
+  - Javascript
+## Programmes
+- Google Fonts
+  - The fonts 'Montserrat' was sourced from Google Fonts.
+- Git
+  - Git was utilised for version control through ‘commit’ and ‘push’ commands through the terminal.
+- 
+
