@@ -53,8 +53,17 @@ website making it easy to navigate and scoring system makes the game fun.
     - Safari: Performs and displays correctly.
     - Mozilla: Performs and displays correctly.
   - Devices
-    - iPhone 11 Pro: Performs and displayes correctly
-    - 
-    - 
+    - iPhone 11 Pro: Performs and displayes correctly.
+    - iPad Pro:  Performs and displayes correctly.
+
+# Future Plans
+  - Increase development on website add more categories and increase quiz length and cutomization.
+  - Promote the website to increase users and acitivty
+
+# Credits 
+
+## Code
+- I used [Google](https://www.google.com/) to find the questions and answers to the quiz
+- I also used [YouTube]
   
 
