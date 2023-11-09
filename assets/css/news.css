@@ -110,3 +110,33 @@ h1, h2, p {
     color: white;
     letter-spacing: 1.5rem;
 }
+
+.thankyou-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.thankyou-container h1 {
+    color: #fb7060;
+    font-size: 2.5rem;
+}
+
+.thankyou-container p {
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.thankyou-container .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #fb7060;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.8rem;
+}
+
+.thankyou-container .btn:hover {
+    background-color: #ff5c4d;
+}
