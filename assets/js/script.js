@@ -1,110 +1,124 @@
-const question = document.querySelector('#question');
+// Get elements from the HTML
+const questionElement = document.getElementById('question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
-const progressText = document.querySelector('#progressText');
-const scoreText = document.querySelector('#score');
+const progressText = document.getElementById('progressText');
+const scoreText = document.getElementById('score');
 
-let currentQuestion = {}
-let acceptingAnswer = true
-let score = 0
-let questionCounter = 0
-let availableQuestions = []
-/* All questions in the order they will be asked and the correct answer for each*/
-let questions = [
+// Quiz variables
+let currentQuestion = {};
+let acceptingAnswer = true;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions = [];
+
+// Questions and answers
+const questions = [
     {
-        question:'Where would you be if you were standing on the Spanish Steps?',
-        choice1:'Madrid',
-        choice2:'Rome',
-        choice3:'Barcelona',
-        choice4:'Napoli',
+        question: 'Where is the singer Paolo Nutini from?',
+        choice1: 'Scotland',
+        choice2: 'Ireland',
+        choice3: 'USA',
+        choice4: 'England',
+        answer: 1,
+    },
+    {
+        question: 'Where would you be if you were standing on the Spanish Steps',
+        choice1: 'Barcelona',
+        choice2: 'Rome',
+        choice3: 'Madrid',
+        choice4: 'London',
         answer: 2,
     },
     {
-        question:'Excluding english what is the most spoken language in the world?',
-        choice1:'Spanish',
-        choice2:'French',
-        choice3:'Hindi',
-        choice4:'Mandarin',
-        answer: 4,
+        question: 'Which planet is known as the Red Planet?',
+        choice1: 'Earth',
+        choice2: 'Mars',
+        choice3: 'Jupiter',
+        choice4: 'Saturn',
+        answer: 2,
     },
     {
-        question:'In which Continent is the is the largest dessert in the world located?',
-        choice1:'Europe',
-        choice2:'Asia',
-        choice3:'South America',
-        choice4:'Africa',
-        answer: 4,
-    },
-    {
-        question:'What country has the highest life expectancy in the world?',
-        choice1:'Japan',
-        choice2:'Macao',
-        choice3:'Hong Kong',
-        choice4:'Singapore',
+        question: 'What is the capital of France?',
+        choice1: 'Berlin',
+        choice2: 'Madrid',
+        choice3: 'Paris',
+        choice4: 'Rome',
         answer: 3,
     },
-]
-/* Points system for each question and the number of questions asked*/
-const SCORE_POINTS = 100
-const MAX_QUESTIONS = 4
-/*Making sure the game starts at beginning with no score and starts the questions counter at 0*/
+];
+
+// Points system and question limit
+const SCORE_POINTS = 100;
+const MAX_QUESTIONS = 4;
+
+// Start the game
 startGame = () => {
-    questionCounter = 0
-    score = 0
-    availableQuestions = [...questions]
-    getNewQuestion()
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions];
+    getNewQuestion();
+};
 
-}
-/* Loading a new question*/
+// Load a new question
 getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-        localStorage.setItem('mostRecentScore', score)
-
-        return window.location.assign('/end.html')
+    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        // Redirect to "end.html" when the game ends
+        window.location.href = 'end.html';
+        return;
     }
 
-    questionCounter++
-    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
-/*Keeps Track of which question the user is on*/
-    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
-    currentQuestion = availableQuestions[questionsIndex]
-    question.innerText = currentQuestion.question
+    questionCounter++;
+    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
 
-    choices.forEach(choice => {
-        const number = choice.dataset['number']
-        choice.innerText = currentQuestion['choice' + number]
-    })
+    // Track the current question
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[questionsIndex];
+    questionElement.innerText = currentQuestion.question;
 
-    availableQuestions.splice(questionsIndex, 1)
+    // Update choices
+    choices.forEach((choice, index) => {
+        choice.innerText = currentQuestion['choice' + (index + 1)];
+    });
 
-    acceptingAnswer = true
-}
-/*Toggling either or green or red if question is incorrect or correct*/
-choices.forEach(choice =>{
+    availableQuestions.splice(questionsIndex, 1);
+
+    acceptingAnswer = true;
+};
+
+// Event listener for choice selection
+choices.forEach(choice => {
     choice.addEventListener('click', e => {
-        if(!acceptingAnswer) return
+        if (!acceptingAnswer) return;
 
-        acceptingAnswer = false
-        const selectedChoice = e.target
-        const selectedAnswer = selectedChoice.dataset['number']
+        acceptingAnswer = false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset['number'];
 
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
-/*Increasing score if answer is correct*/
-        if(classToApply === 'correct') {
-            incrementScore(SCORE_POINTS)
+        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+
+        // Increase score for correct answers
+        if (classToApply === 'correct') {
+            incrementScore(SCORE_POINTS);
         }
 
-        selectedChoice.parentElement.classList.add(classToApply)
-        
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply)
-            getNewQuestion()
-        }, 1000)
-    }) 
-})
-/*calculating users score */
-incrementScore = num => {
-    score +=num
-    scoreText.innerText = score
-}
+        selectedChoice.parentElement.classList.add(classToApply);
 
-startGame()
+        // Delay to show correct/incorrect feedback
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+        }, 1000);
+
+        // Store the score in local storage after each question
+        localStorage.setItem('mostRecentScore', score);
+    });
+});
+
+// Calculate the user's score
+incrementScore = num => {
+    score += num;
+    scoreText.innerText = score;
+};
+
+// Start the game when the page loads
+document.addEventListener('DOMContentLoaded', startGame);

@@ -1,0 +1,112 @@
+
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(144,144,144,1) 12%, rgba(59,59,59,1) 69%);
+    font-size: 62%;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.news-container {
+    background-color: rgba(66,134,255,1);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(0,92,255,1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2, p {
+    margin-bottom: 1.5rem;
+}
+
+.email-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.fa-envelope {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.tbox {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+
+.btn {
+    display: grid;
+    height: 40px; 
+    width: 80%; 
+    background: #fb7060;
+    font-size: 1.4rem; 
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1rem;
+    border-radius: 4px;
+    color: white;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s ease, transform 150ms;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #ff3923;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(255,57,35,1);
+    transform: scale(1.07);
+}
+
+.gohome {
+        display: grid;
+        height: 40px; 
+        width: 80%; 
+        background: #fb7060;
+        font-size: 1.4rem; 
+        text-align: center;
+        text-decoration: none;
+        margin-top: 1rem;
+        border-radius: 4px;
+        color: white;
+        letter-spacing: 1.5px;
+        transition: background-color 0.3s ease, transform 150ms;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+}
+
+.gohome:hover {
+    cursor: pointer;
+    background-color: #ff3923;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(255,57,35,1);
+    transform: scale(1.07);
+}
+
+.gohome1 {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: 1.5rem;
+}
